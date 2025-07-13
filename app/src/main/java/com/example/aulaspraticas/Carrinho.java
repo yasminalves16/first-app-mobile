@@ -20,7 +20,7 @@ public class Carrinho extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Carrinho.this, MainActivity.class);
+                Intent intent = new Intent(Carrinho.this, HomePage.class);
                 startActivity(intent);
             }
         });

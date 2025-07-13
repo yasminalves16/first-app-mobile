@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_bege"
-    tools:context=".MainActivity">
+    tools:context=".HomePage">
 
     <ScrollView
         android:id="@+id/main_scroll"
@@ -190,36 +190,6 @@
                     android:text="(12) 99999-9999"
                     android:textSize="14sp"
                     tools:ignore="HardcodedText"/>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/order_name_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="24dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Faça Seu Pedido"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
-
-                <EditText
-                    android:id="@+id/editTextText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="Digite Seu Nome"
-                    android:textSize="16sp"
-                    tools:ignore="Autofill,HardcodedText" />
             </LinearLayout>
 
 

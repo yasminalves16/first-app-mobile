@@ -20,7 +20,7 @@ public class Perfil extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Perfil.this, MainActivity.class);
+                Intent intent = new Intent(Perfil.this, HomePage.class);
                 startActivity(intent);
             }
         });

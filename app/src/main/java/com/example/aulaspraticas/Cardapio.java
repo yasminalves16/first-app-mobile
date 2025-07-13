@@ -2,7 +2,6 @@ package com.example.aulaspraticas;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,7 +20,7 @@ public class Cardapio extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Cardapio.this, MainActivity.class);
+                Intent intent = new Intent(Cardapio.this, HomePage.class);
                 startActivity(intent);
             }
         });
