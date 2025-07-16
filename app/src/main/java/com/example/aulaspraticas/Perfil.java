@@ -16,6 +16,7 @@ public class Perfil extends AppCompatActivity {
         Button botaoIrInicio = findViewById(R.id.botao_inicio);
         Button botaoIrCardapio = findViewById(R.id.botao_cardapio);
         Button botaoIrCarrinho = findViewById(R.id.botao_carrinho);
+        Button botaoIrLogin = findViewById(R.id.botao_login);
 
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +38,14 @@ public class Perfil extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(Perfil.this, Carrinho.class);
+                startActivity(intent);
+            }
+        });
+
+        botaoIrLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Perfil.this, Login.class);
                 startActivity(intent);
             }
         });
