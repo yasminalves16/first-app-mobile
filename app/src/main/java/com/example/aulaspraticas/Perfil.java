@@ -1,6 +1,7 @@
 package com.example.aulaspraticas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +17,11 @@ public class Perfil extends AppCompatActivity {
         Button botaoIrInicio = findViewById(R.id.botao_inicio);
         Button botaoIrCardapio = findViewById(R.id.botao_cardapio);
         Button botaoIrCarrinho = findViewById(R.id.botao_carrinho);
-        Button botaoIrLogin = findViewById(R.id.botao_login);
+        Button botaoLogout = findViewById(R.id.botao_logout);
 
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View view){
                 Intent intent = new Intent(Perfil.this, HomePage.class);
                 startActivity(intent);
             }
@@ -28,7 +29,7 @@ public class Perfil extends AppCompatActivity {
 
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View view){
                 Intent intent = new Intent(Perfil.this, Cardapio.class);
                 startActivity(intent);
             }
@@ -36,15 +37,20 @@ public class Perfil extends AppCompatActivity {
 
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View view){
                 Intent intent = new Intent(Perfil.this, Carrinho.class);
                 startActivity(intent);
             }
         });
 
-        botaoIrLogin.setOnClickListener(new View.OnClickListener() {
+        botaoLogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View view){
+                SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("isLogged", false);
+                editor.apply();
+
                 Intent intent = new Intent(Perfil.this, Login.class);
                 startActivity(intent);
             }

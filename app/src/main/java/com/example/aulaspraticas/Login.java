@@ -1,5 +1,6 @@
 package com.example.aulaspraticas;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +73,11 @@ public class Login extends AppCompatActivity {
                     errorFocusView.requestFocus();
                     Toast.makeText(Login.this, "Erro ...", Toast.LENGTH_SHORT).show();
                 } else {
+                    SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("isLogged", true);
+                    editor.apply();
+
                     Toast.makeText(Login.this, "Logado com sucesso...", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, HomePage.class);
                     startActivity(intent);

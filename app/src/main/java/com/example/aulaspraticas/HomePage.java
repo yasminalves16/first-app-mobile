@@ -1,6 +1,7 @@
 package com.example.aulaspraticas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,16 @@ public class HomePage extends AppCompatActivity {
         Button botaoIrCardapio = findViewById(R.id.botao_cardapio);
         Button botaoIrCarrinho = findViewById(R.id.botao_carrinho);
         Button botaoIrPerfil = findViewById(R.id.botao_perfil);
+
+        SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
+        boolean isLogged = preferences.getBoolean("isLogged", false);
+
+        if (!isLogged){
+            Intent intent = new Intent(HomePage.this, Login.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         botaoIrCardapioAll.setOnClickListener(new View.OnClickListener() {
             @Override
