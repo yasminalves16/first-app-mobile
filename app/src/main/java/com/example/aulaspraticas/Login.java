@@ -13,6 +13,8 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.aulaspraticas.data.remote.UsuarioApiClient;
+import com.example.aulaspraticas.model.Usuario;
 
 public class Login extends AppCompatActivity {
 
@@ -71,17 +73,42 @@ public class Login extends AppCompatActivity {
 
                 if(errorFocusView != null){
                     errorFocusView.requestFocus();
-                    Toast.makeText(Login.this, "Erro ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Erro nos dados de entrada", Toast.LENGTH_SHORT).show();
                 } else {
-                    SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("isLogged", true);
-                    editor.apply();
+                    Toast.makeText(Login.this, "Verificando credenciais...", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(Login.this, "Logado com sucesso...", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, HomePage.class);
-                    startActivity(intent);
+                    UsuarioApiClient.getInstance(Login.this).autenticarUsuario(email, password, new UsuarioApiClient.LoginCallback() {
+                        @Override
+                        public void onSuccess(Usuario usuarioLogado) {
+                            Toast.makeText(Login.this, "Login bem-sucedido! Bem-vindo(a), " + usuarioLogado.getName() + "!", Toast.LENGTH_SHORT).show();
+
+                            SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putBoolean("isLogged", true);
+                            editor.putString("emailUsuario", usuarioLogado.getEmail());
+                            editor.putString("nomeUsuario", usuarioLogado.getName());
+                            editor.apply();
+
+                            Intent intent = new Intent(Login.this, HomePage.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                        @Override
+                        public void onError(String errorMessage) {
+                            Toast.makeText(Login.this, "Erro de comunicação: " + errorMessage, Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void onCredenciaisInvalidas() {
+                            Toast.makeText(Login.this, "E-mail ou senha inválidos.", Toast.LENGTH_LONG).show();
+                            editTextEmailAddress.setError("Verifique suas credenciais");
+                            editTextPassword.setError("Verifique suas credenciais");
+                            editTextEmailAddress.requestFocus();
+                        }
+                    });
                 }
+
 
             }
         });

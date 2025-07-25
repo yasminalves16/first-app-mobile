@@ -1,14 +1,16 @@
 package com.example.aulaspraticas.model;
 
 public class CardapioItem {
-    public int imagem;
-    public String titulo;
-    public String descricao;
-    public String preco;
-    public String tempo;
-    public boolean disponivel;
+    private int id;
+    private String imagem;
+    private String titulo;
+    private String descricao;
+    private String preco;
+    private String tempo;
+    private boolean disponivel;
 
-    public CardapioItem(int imagem, String titulo, String descricao, String preco, String tempo, boolean disponivel) {
+    public CardapioItem(int id, String imagem, String titulo, String descricao, String preco, String tempo, boolean disponivel) {
+        this.id = id;
         this.imagem = imagem;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -16,4 +18,33 @@ public class CardapioItem {
         this.tempo = tempo;
         this.disponivel = disponivel;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getPreco() {
+        return preco;
+    }
+
+    public String getTempo() {
+        return tempo;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
 }
+

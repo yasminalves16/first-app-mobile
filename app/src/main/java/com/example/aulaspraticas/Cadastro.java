@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.aulaspraticas.model.Usuario;
+import com.example.aulaspraticas.data.remote.UsuarioApiClient;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -101,9 +104,42 @@ public class Cadastro extends AppCompatActivity {
                     errorFocusView.requestFocus();
                     Toast.makeText(Cadastro.this, "Reveja os campos indicados com erro", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(Cadastro.this, Login.class);
-                    startActivity(intent);
+                    Toast.makeText(Cadastro.this, "Verificando e-mail...", Toast.LENGTH_SHORT).show();
+
+                    UsuarioApiClient.getInstance(Cadastro.this).verificarEmailUnico(email, new UsuarioApiClient.EmailCheckCallback() {
+                        @Override
+                        public void onSuccess(boolean isUnique) {
+                            if (isUnique) {
+                                Usuario novoUsuario = new Usuario(name, email, phone, password);
+
+                                UsuarioApiClient.getInstance(Cadastro.this).cadastrarUsuario(novoUsuario, new UsuarioApiClient.RegisterUserCallback() {
+                                    @Override
+                                    public void onSuccess(Usuario usuarioCadastrado) {
+                                        Toast.makeText(Cadastro.this, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(Cadastro.this, Login.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+                                    @Override
+                                    public void onError(String errorMessage) {
+                                        Toast.makeText(Cadastro.this, "Falha no cadastro: " + errorMessage, Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            } else {
+                                editTextEmail.setError("Este e-mail já está cadastrado.");
+                                editTextEmail.requestFocus();
+                                Toast.makeText(Cadastro.this, "E-mail já cadastrado.", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onError(String errorMessage) {
+                            Toast.makeText(Cadastro.this, "Erro ao verificar e-mail: " + errorMessage, Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
+
             }
         });
 

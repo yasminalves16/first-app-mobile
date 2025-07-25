@@ -2,6 +2,7 @@ package com.example.aulaspraticas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aulaspraticas.adapter.CardapioAdapter;
 import com.example.aulaspraticas.model.CardapioItem;
+import com.example.aulaspraticas.data.remote.ItemCardapioApiClient;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -58,17 +60,23 @@ public class Cardapio extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        listaProdutos = new ArrayList<>();
-        listaProdutos.add(new CardapioItem(R.drawable.card_risoto, "Risoto de Cogumelos", "Arroz arbóreo com cogumelos frescos", "45.90", "⏱ 25 min", true));
-        listaProdutos.add(new CardapioItem(R.drawable.card_paste, "Penne ao Tomate", "Macarrão penne, tomate cereja e parmesão", "31.90", "⏱ 18 min", true));
-        listaProdutos.add(new CardapioItem(R.drawable.card_burguer, "Burguer da Casa", "Brioche, blend Angus e cheddar", "34.00", "⏱ 15 min", true));
-        listaProdutos.add(new CardapioItem(R.drawable.card_salad, "Salada Tropical", "Folhas verdes, frango grelhado e molho cítrico", "22.00", "⏱ 10 min", true));
-        listaProdutos.add(new CardapioItem(R.drawable.card_entrada, "Tábua Mediterrânea", "Homus, coalhada, legumes e pão sírio", "39.90", "⏱ 10 min", true));
-        listaProdutos.add(new CardapioItem(R.drawable.card_dessert, "Brownie Artesanal", "Chocolate belga, nozes e sorvete", "26.00", "⏱ 12 min", true));
-        listaProdutos.add(new CardapioItem(R.drawable.card_juice, "Suco Refrescante", "Abacaxi, hortelã e limão", "15.00", "⏱ 5 min", true));
+        listagemProdutos();
 
-        adapter = new CardapioAdapter(listaProdutos);
-        recyclerView.setAdapter(adapter);
+    }
 
+    private void listagemProdutos() {
+        ItemCardapioApiClient.getInstance(this).listagemProdutos(new ItemCardapioApiClient.ProdutosCallback() {
+            @Override
+            public void onSuccess(List<CardapioItem> produtos) {
+                adapter = new CardapioAdapter(produtos);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(Cardapio.this, "Erro ao listar produtos: " + errorMessage, Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }
