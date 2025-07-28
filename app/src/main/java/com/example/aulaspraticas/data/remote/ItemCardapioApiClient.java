@@ -60,8 +60,25 @@ public class ItemCardapioApiClient extends BaseApiClient {
                         String tempo = produtoJson.getString("tempo");
                         String imagem = produtoJson.getString("imagem");
                         boolean disponivel = produtoJson.getBoolean("disponivel");
+                        String categoria = produtoJson.optString("categoria", "Todos");
+                        JSONArray ingredientesArray = produtoJson.optJSONArray("ingredientes");
+                        List<String> ingredientes = new ArrayList<>();
+                        if (ingredientesArray != null) {
+                            for (int j = 0; j < ingredientesArray.length(); j++) {
+                                ingredientes.add(ingredientesArray.getString(j));
+                            }
+                        }
+                        JSONArray alergenicosArray = produtoJson.optJSONArray("alergenicos");
+                        List<String> alergenicos = new ArrayList<>();
+                        if (alergenicosArray != null) {
+                            for (int j = 0; j < alergenicosArray.length(); j++) {
+                                alergenicos.add(alergenicosArray.getString(j));
+                            }
+                        }
+                        boolean gluten = produtoJson.optBoolean("gluten", false);
 
-                        CardapioItem item = new CardapioItem(id, imagem, nome, descricao, preco, tempo, disponivel);
+                        CardapioItem item = new CardapioItem(id, imagem, nome, descricao, preco, tempo, disponivel, gluten, categoria, ingredientes, alergenicos);
+
                         produtos.add(item);
 
                     } catch (JSONException e) {

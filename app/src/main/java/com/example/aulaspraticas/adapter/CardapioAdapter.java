@@ -1,5 +1,6 @@
 package com.example.aulaspraticas.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.aulaspraticas.R;
 import com.example.aulaspraticas.model.CardapioItem;
 
@@ -16,27 +18,13 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.aulaspraticas.model.CardapioItem;
-import com.example.aulaspraticas.utils.Constants;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.CardapioViewHolder> {
-    private final List<CardapioItem> produtos;
 
-    public CardapioAdapter(List<CardapioItem> produtos) {
+    private final List<CardapioItem> produtos;
+    private final Context context;
+
+    public CardapioAdapter(Context context, List<CardapioItem> produtos) {
+        this.context = context;
         this.produtos = produtos;
     }
 
@@ -70,11 +58,21 @@ public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.Cardap
     public void onBindViewHolder(@NonNull CardapioViewHolder holder, int position) {
         CardapioItem item = produtos.get(position);
 
-//        holder.imagemProduto.setImageResource(item.imagem);
+
+        Glide.with(holder.itemView.getContext())
+                .load(item.getImagem())
+                .placeholder(R.drawable.card_entrada)
+                .into(holder.imagemProduto);
+
         holder.nomeProduto.setText(item.getTitulo());
         holder.descricaoProduto.setText(item.getDescricao());
         NumberFormat formatBR = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-        holder.precoProduto.setText(formatBR.format(Double.parseDouble(item.getPreco().replace("R$", "").replace(",", "."))));
+        try {
+            double preco = Double.parseDouble(item.getPreco().replace(",", "."));
+            holder.precoProduto.setText(formatBR.format(preco));
+        } catch (NumberFormatException e) {
+            holder.precoProduto.setText("R$ --");
+        }
         holder.tempoPreparo.setText(item.getTempo());
         holder.statusProduto.setText(item.isDisponivel() ? "Disponível" : "Indisponível");
     }

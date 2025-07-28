@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
-    android:background="@color/white"
+    android:background="@color/background_bege"
     android:elevation="1dp"
     android:gravity="center"
     android:padding="1dp">

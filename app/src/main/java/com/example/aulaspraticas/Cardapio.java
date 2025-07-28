@@ -22,7 +22,6 @@ public class Cardapio extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CardapioAdapter adapter;
-    private List<CardapioItem> listaProdutos;
 
 
     @Override
@@ -68,7 +67,7 @@ public class Cardapio extends AppCompatActivity {
         ItemCardapioApiClient.getInstance(this).listagemProdutos(new ItemCardapioApiClient.ProdutosCallback() {
             @Override
             public void onSuccess(List<CardapioItem> produtos) {
-                adapter = new CardapioAdapter(produtos);
+                adapter = new CardapioAdapter(Cardapio.this, produtos);
                 recyclerView.setAdapter(adapter);
             }
 
