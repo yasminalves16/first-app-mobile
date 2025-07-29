@@ -15,6 +15,15 @@
         android:theme="@style/Theme.AulasPraticas"
         tools:targetApi="31">
         <activity
+            android:name=".Pedidos"
+            android:exported="false" />
+        <activity
+            android:name=".Pagamento"
+            android:exported="false" />
+        <activity
+            android:name=".Enderecos"
+            android:exported="false" />
+        <activity
             android:name=".DetalhesProduto"
             android:exported="false" />
         <activity
@@ -27,9 +36,6 @@
             android:name=".Cadastro"
             android:exported="false" />
         <activity
-            android:name=".TesteActivity"
-            android:exported="false" />
-        <activity
             android:name=".Cardapio"
             android:exported="false" />
         <activity
@@ -37,9 +43,6 @@
             android:exported="false" />
         <activity
             android:name=".Perfil"
-            android:exported="false" />
-        <activity
-            android:name=".Calculadora"
             android:exported="false" />
         <activity
             android:name=".HomePage"

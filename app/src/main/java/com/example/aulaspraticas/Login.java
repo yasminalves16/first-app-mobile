@@ -87,6 +87,7 @@ public class Login extends AppCompatActivity {
                             editor.putBoolean("isLogged", true);
                             editor.putString("emailUsuario", usuarioLogado.getEmail());
                             editor.putString("nomeUsuario", usuarioLogado.getName());
+                            editor.putString("telefoneUsuario", usuarioLogado.getPhone());
                             editor.apply();
 
                             Intent intent = new Intent(Login.this, HomePage.class);
