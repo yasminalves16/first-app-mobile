@@ -1,6 +1,7 @@
 package com.example.aulaspraticas.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.aulaspraticas.DetalhesProduto;
 import com.example.aulaspraticas.R;
 import com.example.aulaspraticas.model.CardapioItem;
 
@@ -35,6 +37,7 @@ public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.Cardap
         public TextView precoProduto;
         public TextView tempoPreparo;
         public TextView statusProduto;
+        public TextView verMais;
 
         public CardapioViewHolder(View itemView) {
             super(itemView);
@@ -44,6 +47,7 @@ public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.Cardap
             precoProduto = itemView.findViewById(R.id.preco_prato);
             tempoPreparo = itemView.findViewById(R.id.tempo_preparo);
             statusProduto = itemView.findViewById(R.id.status_disponivel);
+            verMais = itemView.findViewById(R.id.texto_ver_mais);
         }
     }
 
@@ -74,6 +78,13 @@ public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.Cardap
             holder.precoProduto.setText("R$ --");
         }
         holder.tempoPreparo.setText(item.getTempo());
+        holder.verMais.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetalhesProduto.class);
+            intent.putExtra("produto", produtos.get(holder.getAdapterPosition()));
+            context.startActivity(intent);
+        });
+
+
         holder.statusProduto.setText(item.isDisponivel() ? "Disponível" : "Indisponível");
     }
 
