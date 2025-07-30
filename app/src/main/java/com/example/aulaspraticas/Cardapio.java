@@ -16,12 +16,14 @@ import com.example.aulaspraticas.data.remote.ItemCardapioApiClient;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Cardapio extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CardapioAdapter adapter;
+    private String categoriaSelecionada = "Todos";
 
 
     @Override
@@ -58,6 +60,10 @@ public class Cardapio extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_cardapio);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("categoria")) {
+            categoriaSelecionada = intent.getStringExtra("categoria");
+        }
 
         listagemProdutos();
 
@@ -67,15 +73,25 @@ public class Cardapio extends AppCompatActivity {
         ItemCardapioApiClient.getInstance(this).listagemProdutos(new ItemCardapioApiClient.ProdutosCallback() {
             @Override
             public void onSuccess(List<CardapioItem> produtos) {
-                adapter = new CardapioAdapter(Cardapio.this, produtos);
+                List<CardapioItem> produtosFiltrados;
+
+                if (!categoriaSelecionada.equals("Todos")) {
+                    produtosFiltrados = produtos.stream()
+                            .filter(p -> p.getCategoria().equalsIgnoreCase(categoriaSelecionada))
+                            .collect(Collectors.toList());
+                } else {
+                    produtosFiltrados = produtos;
+                }
+
+                adapter = new CardapioAdapter(Cardapio.this, produtosFiltrados);
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onError(String errorMessage) {
                 Toast.makeText(Cardapio.this, "Erro ao listar produtos: " + errorMessage, Toast.LENGTH_LONG).show();
-
             }
         });
     }
+
 }

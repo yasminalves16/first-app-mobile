@@ -38,44 +38,34 @@ public class HomePage extends AppCompatActivity {
             return;
         }
 
-        botaoIrCardapioAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
-                startActivity(intent);
-            }
+        botaoIrCardapioAll.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            intent.putExtra("categoria", "Todos");
+            startActivity(intent);
         });
 
-        botaoIrCardapioEntradas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
-                startActivity(intent);
-            }
+        botaoIrCardapioEntradas.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            intent.putExtra("categoria", "Entradas");
+            startActivity(intent);
         });
 
-        botaoIrCardapioPratosPrincipais.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
-                startActivity(intent);
-            }
+        botaoIrCardapioPratosPrincipais.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            intent.putExtra("categoria", "Pratos Principais");
+            startActivity(intent);
         });
 
-        botaoIrCardapioMassas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
-                startActivity(intent);
-            }
+        botaoIrCardapioMassas.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            intent.putExtra("categoria", "Massas");
+            startActivity(intent);
         });
 
-        botaoIrCardapioBebidas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
-                startActivity(intent);
-            }
+        botaoIrCardapioBebidas.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            intent.putExtra("categoria", "Bebidas");
+            startActivity(intent);
         });
 
         botaoIrCardapioSobremesas.setOnClickListener(new View.OnClickListener() {
@@ -86,12 +76,10 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
-                startActivity(intent);
-            }
+        botaoIrCardapioSobremesas.setOnClickListener(v -> {
+            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            intent.putExtra("categoria", "Sobremesas");
+            startActivity(intent);
         });
 
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
