@@ -68,18 +68,18 @@ public class HomePage extends AppCompatActivity {
             startActivity(intent);
         });
 
-        botaoIrCardapioSobremesas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
-                startActivity(intent);
-            }
-        });
-
         botaoIrCardapioSobremesas.setOnClickListener(v -> {
             Intent intent = new Intent(HomePage.this, Cardapio.class);
             intent.putExtra("categoria", "Sobremesas");
             startActivity(intent);
+        });
+
+        botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(HomePage.this, Cardapio.class);
+                startActivity(intent);
+            }
         });
 
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
