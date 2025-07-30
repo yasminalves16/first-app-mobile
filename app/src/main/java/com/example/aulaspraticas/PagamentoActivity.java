@@ -7,12 +7,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Pagamento extends AppCompatActivity {
+public class PagamentoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pagamento);
+        setContentView(R.layout.activity_pagamento);
 
         Button botaoFinalizar = findViewById(R.id.button_finalizar_pedido);
 
@@ -24,7 +24,7 @@ public class Pagamento extends AppCompatActivity {
         botaoFinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Pagamento.this, Pedidos.class);
+                Intent intent = new Intent(PagamentoActivity.this, PedidosActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -33,7 +33,7 @@ public class Pagamento extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Pagamento.this, HomePage.class);
+                Intent intent = new Intent(PagamentoActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -41,7 +41,7 @@ public class Pagamento extends AppCompatActivity {
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Pagamento.this, Cardapio.class);
+                Intent intent = new Intent(PagamentoActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class Pagamento extends AppCompatActivity {
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Pagamento.this, Carrinho.class);
+                Intent intent = new Intent(PagamentoActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +57,7 @@ public class Pagamento extends AppCompatActivity {
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Pagamento.this, Perfil.class);
+                Intent intent = new Intent(PagamentoActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });

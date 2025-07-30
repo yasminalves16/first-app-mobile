@@ -9,13 +9,13 @@ import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HomePage extends AppCompatActivity {
+public class HomePageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.homepage);
+        setContentView(R.layout.activity_homepage);
 
         Button botaoIrCardapioAll = findViewById(R.id.botao_todos);
         Button botaoIrCardapioEntradas = findViewById(R.id.botao_entradas);
@@ -32,44 +32,44 @@ public class HomePage extends AppCompatActivity {
         boolean isLogged = preferences.getBoolean("isLogged", false);
 
         if (!isLogged){
-            Intent intent = new Intent(HomePage.this, Login.class);
+            Intent intent = new Intent(HomePageActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
             return;
         }
 
         botaoIrCardapioAll.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
             intent.putExtra("categoria", "Todos");
             startActivity(intent);
         });
 
         botaoIrCardapioEntradas.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
             intent.putExtra("categoria", "Entradas");
             startActivity(intent);
         });
 
         botaoIrCardapioPratosPrincipais.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
             intent.putExtra("categoria", "Pratos Principais");
             startActivity(intent);
         });
 
         botaoIrCardapioMassas.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
             intent.putExtra("categoria", "Massas");
             startActivity(intent);
         });
 
         botaoIrCardapioBebidas.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
             intent.putExtra("categoria", "Bebidas");
             startActivity(intent);
         });
 
         botaoIrCardapioSobremesas.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, Cardapio.class);
+            Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
             intent.putExtra("categoria", "Sobremesas");
             startActivity(intent);
         });
@@ -77,7 +77,7 @@ public class HomePage extends AppCompatActivity {
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(HomePage.this, Cardapio.class);
+                Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +85,7 @@ public class HomePage extends AppCompatActivity {
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Carrinho.class);
+                Intent intent = new Intent(HomePageActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,7 +93,7 @@ public class HomePage extends AppCompatActivity {
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(HomePage.this, Perfil.class);
+                Intent intent = new Intent(HomePageActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });

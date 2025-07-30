@@ -7,11 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Carrinho extends AppCompatActivity {
+public class CarrinhoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.carrinho);
+        setContentView(R.layout.activity_carrinho);
 
         Button botaoIrInicio = findViewById(R.id.botao_inicio);
         Button botaoIrCardapio = findViewById(R.id.botao_cardapio);
@@ -21,21 +21,21 @@ public class Carrinho extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Carrinho.this, HomePage.class);
+                Intent intent = new Intent(CarrinhoActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Carrinho.this, Cardapio.class);
+                Intent intent = new Intent(CarrinhoActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
         });
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Carrinho.this, Perfil.class);
+                Intent intent = new Intent(CarrinhoActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });
@@ -43,7 +43,7 @@ public class Carrinho extends AppCompatActivity {
         botaoIrPagamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Carrinho.this, Enderecos.class);
+                Intent intent = new Intent(CarrinhoActivity.this, EnderecosActivity.class);
                 intent.putExtra("isCheckoutFlow", true);
                 startActivity(intent);
 

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class Cardapio extends AppCompatActivity {
+public class CardapioActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CardapioAdapter adapter;
@@ -29,7 +29,7 @@ public class Cardapio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cardapio);
+        setContentView(R.layout.activity_cardapio);
 
         Button botaoIrInicio = findViewById(R.id.botao_inicio);
         Button botaoIrCarrinho = findViewById(R.id.botao_carrinho);
@@ -38,21 +38,21 @@ public class Cardapio extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Cardapio.this, HomePage.class);
+                Intent intent = new Intent(CardapioActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Cardapio.this, Carrinho.class);
+                Intent intent = new Intent(CardapioActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Cardapio.this, Perfil.class);
+                Intent intent = new Intent(CardapioActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });
@@ -83,13 +83,13 @@ public class Cardapio extends AppCompatActivity {
                     produtosFiltrados = produtos;
                 }
 
-                adapter = new CardapioAdapter(Cardapio.this, produtosFiltrados);
+                adapter = new CardapioAdapter(CardapioActivity.this, produtosFiltrados);
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onError(String errorMessage) {
-                Toast.makeText(Cardapio.this, "Erro ao listar produtos: " + errorMessage, Toast.LENGTH_LONG).show();
+                Toast.makeText(CardapioActivity.this, "Erro ao listar produtos: " + errorMessage, Toast.LENGTH_LONG).show();
             }
         });
     }

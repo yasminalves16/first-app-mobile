@@ -1,10 +1,8 @@
 package com.example.aulaspraticas;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,13 +11,13 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RecuperarSenha extends AppCompatActivity {
+public class RecuperarSenhaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.recuperar_senha);
+        setContentView(R.layout.activity_recuperar_senha);
 
         Button buttonRegister = findViewById(R.id.buttonRegister);
         TextView textViewRegister = findViewById(R.id.textViewLogin);
@@ -60,9 +58,9 @@ public class RecuperarSenha extends AppCompatActivity {
 
                 if (errorFocusView != null) {
                     errorFocusView.requestFocus();
-                    Toast.makeText(RecuperarSenha.this, "Reveja os campos indicados com erro", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RecuperarSenhaActivity.this, "Reveja os campos indicados com erro", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(RecuperarSenha.this, Login.class);
+                    Intent intent = new Intent(RecuperarSenhaActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
 
@@ -72,7 +70,7 @@ public class RecuperarSenha extends AppCompatActivity {
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RecuperarSenha.this, Cadastro.class);
+                Intent intent = new Intent(RecuperarSenhaActivity.this, CadastroActivity.class);
                 startActivity(intent);
             }
         });

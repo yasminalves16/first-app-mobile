@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Perfil extends AppCompatActivity {
+public class PerfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.perfil);
+        setContentView(R.layout.activity_perfil);
 
         Button botaoIrInicio = findViewById(R.id.botao_inicio);
         Button botaoIrCardapio = findViewById(R.id.botao_cardapio);
@@ -40,7 +40,7 @@ public class Perfil extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Perfil.this, HomePage.class);
+                Intent intent = new Intent(PerfilActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +48,7 @@ public class Perfil extends AppCompatActivity {
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Perfil.this, Cardapio.class);
+                Intent intent = new Intent(PerfilActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +56,7 @@ public class Perfil extends AppCompatActivity {
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Perfil.this, Carrinho.class);
+                Intent intent = new Intent(PerfilActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
@@ -69,7 +69,7 @@ public class Perfil extends AppCompatActivity {
                 editor.putBoolean("isLogged", false);
                 editor.apply();
 
-                Intent intent = new Intent(Perfil.this, Login.class);
+                Intent intent = new Intent(PerfilActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +77,7 @@ public class Perfil extends AppCompatActivity {
         botaoEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Perfil.this, Enderecos.class);
+                Intent intent = new Intent(PerfilActivity.this, EnderecosActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +85,7 @@ public class Perfil extends AppCompatActivity {
         botaoPedidos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Perfil.this, Pedidos.class);
+                Intent intent = new Intent(PerfilActivity.this, PedidosActivity.class);
                 startActivity(intent);
             }
         });

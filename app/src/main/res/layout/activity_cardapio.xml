@@ -79,7 +79,7 @@
         android:padding="16dp"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/card_produtos" />
+        tools:listitem="@layout/item_cardapio" />
 
     <include
         android:id="@+id/footerNavigation"

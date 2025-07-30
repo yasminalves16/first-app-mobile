@@ -8,12 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class Enderecos extends AppCompatActivity {
+public class EnderecosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.enderecos);
+        setContentView(R.layout.activity_enderecos);
 
 
         boolean isCheckoutFlow = getIntent().getBooleanExtra("isCheckoutFlow", false);
@@ -32,13 +32,13 @@ public class Enderecos extends AppCompatActivity {
             selecionarEndereco2.setVisibility(View.VISIBLE);
 
             selecionarEndereco1.setOnClickListener(v -> {
-                Intent intent = new Intent(Enderecos.this, Pagamento.class);
+                Intent intent = new Intent(EnderecosActivity.this, PagamentoActivity.class);
                 startActivity(intent);
                 finish();
             });
 
             selecionarEndereco2.setOnClickListener(v -> {
-                Intent intent = new Intent(Enderecos.this, Pagamento.class);
+                Intent intent = new Intent(EnderecosActivity.this, PagamentoActivity.class);
                 startActivity(intent);
                 finish();
             });
@@ -51,7 +51,7 @@ public class Enderecos extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Enderecos.this, HomePage.class);
+                Intent intent = new Intent(EnderecosActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -59,7 +59,7 @@ public class Enderecos extends AppCompatActivity {
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Enderecos.this, Cardapio.class);
+                Intent intent = new Intent(EnderecosActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
         });
@@ -67,7 +67,7 @@ public class Enderecos extends AppCompatActivity {
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Enderecos.this, Carrinho.class);
+                Intent intent = new Intent(EnderecosActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,7 +75,7 @@ public class Enderecos extends AppCompatActivity {
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Enderecos.this, Perfil.class);
+                Intent intent = new Intent(EnderecosActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });

@@ -9,14 +9,12 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.text.TextUtils;
-import android.util.Patterns;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.aulaspraticas.data.remote.UsuarioApiClient;
 import com.example.aulaspraticas.model.Usuario;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText editTextEmailAddress;
     private EditText editTextPassword;
@@ -27,7 +25,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         buttonLogin = findViewById(R.id.buttonLogin);
         textViewRegister = findViewById(R.id.textViewRegister);
@@ -73,14 +71,14 @@ public class Login extends AppCompatActivity {
 
                 if(errorFocusView != null){
                     errorFocusView.requestFocus();
-                    Toast.makeText(Login.this, "Erro nos dados de entrada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Erro nos dados de entrada", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(Login.this, "Verificando credenciais...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Verificando credenciais...", Toast.LENGTH_SHORT).show();
 
-                    UsuarioApiClient.getInstance(Login.this).autenticarUsuario(email, password, new UsuarioApiClient.LoginCallback() {
+                    UsuarioApiClient.getInstance(LoginActivity.this).autenticarUsuario(email, password, new UsuarioApiClient.LoginCallback() {
                         @Override
                         public void onSuccess(Usuario usuarioLogado) {
-                            Toast.makeText(Login.this, "Login bem-sucedido! Bem-vindo(a), " + usuarioLogado.getName() + "!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login bem-sucedido! Bem-vindo(a), " + usuarioLogado.getName() + "!", Toast.LENGTH_SHORT).show();
 
                             SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
@@ -90,19 +88,19 @@ public class Login extends AppCompatActivity {
                             editor.putString("telefoneUsuario", usuarioLogado.getPhone());
                             editor.apply();
 
-                            Intent intent = new Intent(Login.this, HomePage.class);
+                            Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
                             startActivity(intent);
                             finish();
                         }
 
                         @Override
                         public void onError(String errorMessage) {
-                            Toast.makeText(Login.this, "Erro de comunicação: " + errorMessage, Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "Erro de comunicação: " + errorMessage, Toast.LENGTH_LONG).show();
                         }
 
                         @Override
                         public void onCredenciaisInvalidas() {
-                            Toast.makeText(Login.this, "E-mail ou senha inválidos.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "E-mail ou senha inválidos.", Toast.LENGTH_LONG).show();
                             editTextEmailAddress.setError("Verifique suas credenciais");
                             editTextPassword.setError("Verifique suas credenciais");
                             editTextEmailAddress.requestFocus();
@@ -117,7 +115,7 @@ public class Login extends AppCompatActivity {
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this, Cadastro.class);
+                Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
                 startActivity(intent);
             }
         });
@@ -125,7 +123,7 @@ public class Login extends AppCompatActivity {
         textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Login.this, RecuperarSenha.class);
+                Intent intent = new Intent(LoginActivity.this, RecuperarSenhaActivity.class);
                 startActivity(intent);
             }
         });

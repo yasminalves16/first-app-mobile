@@ -15,37 +15,37 @@
         android:theme="@style/Theme.AulasPraticas"
         tools:targetApi="31">
         <activity
-            android:name=".Pedidos"
+            android:name=".PedidosActivity"
             android:exported="false" />
         <activity
-            android:name=".Pagamento"
+            android:name=".PagamentoActivity"
             android:exported="false" />
         <activity
-            android:name=".Enderecos"
+            android:name=".EnderecosActivity"
             android:exported="false" />
         <activity
-            android:name=".DetalhesProduto"
+            android:name=".ItemDetalheActivity"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RecuperarSenha"
+            android:name=".RecuperarSenhaActivity"
             android:exported="false" />
         <activity
-            android:name=".Cadastro"
+            android:name=".CadastroActivity"
             android:exported="false" />
         <activity
-            android:name=".Cardapio"
+            android:name=".CardapioActivity"
             android:exported="false" />
         <activity
-            android:name=".Carrinho"
+            android:name=".CarrinhoActivity"
             android:exported="false" />
         <activity
-            android:name=".Perfil"
+            android:name=".PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".HomePage"
+            android:name=".HomePageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

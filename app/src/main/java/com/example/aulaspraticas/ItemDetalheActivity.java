@@ -15,7 +15,7 @@ import com.example.aulaspraticas.model.CardapioItem;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class DetalhesProduto extends AppCompatActivity {
+public class ItemDetalheActivity extends AppCompatActivity {
 
     private TextView titulo, descricao, preco, tempo, ingredientes, infoAdicional;
     private ImageView imagem;
@@ -24,7 +24,7 @@ public class DetalhesProduto extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.detalhes_produto);
+        setContentView(R.layout.activity_item_detalhe);
 
 
         titulo = findViewById(R.id.titulo_detalhe);
@@ -77,7 +77,7 @@ public class DetalhesProduto extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(DetalhesProduto.this, HomePage.class);
+                Intent intent = new Intent(ItemDetalheActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +85,7 @@ public class DetalhesProduto extends AppCompatActivity {
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(DetalhesProduto.this, Cardapio.class);
+                Intent intent = new Intent(ItemDetalheActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,7 +93,7 @@ public class DetalhesProduto extends AppCompatActivity {
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(DetalhesProduto.this, Carrinho.class);
+                Intent intent = new Intent(ItemDetalheActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
@@ -101,7 +101,7 @@ public class DetalhesProduto extends AppCompatActivity {
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(DetalhesProduto.this, Perfil.class);
+                Intent intent = new Intent(ItemDetalheActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });

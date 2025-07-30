@@ -5,18 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class Pedidos extends AppCompatActivity {
+public class PedidosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pedidos);
+        setContentView(R.layout.activity_pedidos);
 
         Button botaoIrInicio = findViewById(R.id.botao_inicio);
         Button botaoIrCardapio = findViewById(R.id.botao_cardapio);
@@ -26,7 +22,7 @@ public class Pedidos extends AppCompatActivity {
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Pedidos.this, HomePage.class);
+                Intent intent = new Intent(PedidosActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -34,7 +30,7 @@ public class Pedidos extends AppCompatActivity {
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Pedidos.this, Cardapio.class);
+                Intent intent = new Intent(PedidosActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +38,7 @@ public class Pedidos extends AppCompatActivity {
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Pedidos.this, Carrinho.class);
+                Intent intent = new Intent(PedidosActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +46,7 @@ public class Pedidos extends AppCompatActivity {
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Pedidos.this, Perfil.class);
+                Intent intent = new Intent(PedidosActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });

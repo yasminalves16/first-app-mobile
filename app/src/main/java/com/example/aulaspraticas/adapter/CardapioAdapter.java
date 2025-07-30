@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.aulaspraticas.DetalhesProduto;
+import com.example.aulaspraticas.ItemDetalheActivity;
 import com.example.aulaspraticas.R;
 import com.example.aulaspraticas.model.CardapioItem;
 
@@ -54,7 +54,7 @@ public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.Cardap
     @NonNull
     @Override
     public CardapioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_produtos, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardapio, parent, false);
         return new CardapioViewHolder(view);
     }
 
@@ -79,7 +79,7 @@ public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.Cardap
         }
         holder.tempoPreparo.setText(item.getTempo());
         holder.verMais.setOnClickListener(v -> {
-            Intent intent = new Intent(context, DetalhesProduto.class);
+            Intent intent = new Intent(context, ItemDetalheActivity.class);
             intent.putExtra("produto", produtos.get(holder.getAdapterPosition()));
             context.startActivity(intent);
         });
