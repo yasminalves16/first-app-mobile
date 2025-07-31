@@ -52,6 +52,11 @@ public class UsuarioApiClient {
         void onCredenciaisInvalidas();
     }
 
+    public interface UpdateUserCallback {
+        void onSuccess(Usuario usuarioAtualizado);
+        void onError(String errorMessage);
+    }
+
     public void verificarEmailUnico(String email, final EmailCheckCallback callback) {
         String url = Constants.BASE_URL + "users?email=" + email;
 
@@ -159,4 +164,45 @@ public class UsuarioApiClient {
         );
         addToRequestQueue(jsonArrayRequest);
     }
+
+    public void editarUsuario(final Usuario usuario, final UpdateUserCallback callback) {
+        String url = Constants.BASE_URL + "users/" + usuario.getId();
+
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("name", usuario.getName());
+            jsonBody.put("email", usuario.getEmail());
+            jsonBody.put("phone", usuario.getPhone());
+
+            if (usuario.getPassword() != null && !usuario.getPassword().isEmpty()) {
+                jsonBody.put("password", usuario.getPassword());
+            }
+        } catch (JSONException e) {
+            callback.onError("Erro ao criar JSON: " + e.getMessage());
+            return;
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.PUT,
+                url,
+                jsonBody,
+                response -> callback.onSuccess(usuario),
+                error -> {
+                    String errorMessage = "Erro ao editar usuário.";
+                    if (error != null) {
+                        if (error.networkResponse != null && error.networkResponse.data != null) {
+                            String body = new String(error.networkResponse.data);
+                            errorMessage += " Detalhes: " + body;
+                        } else if (error.getMessage() != null) {
+                            errorMessage += ": " + error.getMessage();
+                        }
+                    }
+                    callback.onError(errorMessage);
+                }
+        );
+
+        addToRequestQueue(request);
+    }
+
+
 }

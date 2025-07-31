@@ -21,6 +21,7 @@ public class PerfilActivity extends AppCompatActivity {
         Button botaoLogout = findViewById(R.id.botao_logout);
         Button botaoEndereco = findViewById(R.id.botao_enderecos);
         Button botaoPedidos = findViewById(R.id.botao_ver_pedidos);
+        Button botaoEditarDados = findViewById(R.id.botao_editar_dados);
 
 
         TextView nomeUsuario = findViewById(R.id.nome_usuario);
@@ -88,6 +89,11 @@ public class PerfilActivity extends AppCompatActivity {
                 Intent intent = new Intent(PerfilActivity.this, PedidosActivity.class);
                 startActivity(intent);
             }
+        });
+
+        botaoEditarDados.setOnClickListener(v -> {
+            Intent intent = new Intent(PerfilActivity.this, EditarPerfilActivity.class);
+            startActivity(intent);
         });
 
     }
