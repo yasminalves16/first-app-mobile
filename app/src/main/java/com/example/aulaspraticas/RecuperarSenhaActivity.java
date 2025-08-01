@@ -11,7 +11,12 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.aulaspraticas.data.remote.UsuarioApiClient;
+
 public class RecuperarSenhaActivity extends AppCompatActivity {
+
+    private EditText editTextEmail, editTextPassword, editTextPasswordConfirmation;
+    private UsuarioApiClient usuarioApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,60 +24,69 @@ public class RecuperarSenhaActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_recuperar_senha);
 
+        editTextEmail = findViewById(R.id.editTextEmail); // <-- adicione no layout!
+        editTextPassword = findViewById(R.id.editPassword);
+        editTextPasswordConfirmation = findViewById(R.id.editPasswordConfirmation);
+
         Button buttonRegister = findViewById(R.id.buttonRegister);
         TextView textViewRegister = findViewById(R.id.textViewLogin);
-        EditText editTextPassword = findViewById(R.id.editPassword);
-        EditText editTextPasswordConfirmation = findViewById(R.id.editPasswordConfirmation);
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        usuarioApiClient = UsuarioApiClient.getInstance(this);
 
-                String password = editTextPassword.getText().toString().trim();
-                String passwordConfirmation = editTextPasswordConfirmation.getText().toString().trim();
-                View errorFocusView = null;
+        buttonRegister.setOnClickListener(v -> {
 
-                if (password.isEmpty()) {
-                    editTextPassword.setError("Campo senha é obrigatório");
-                    if (errorFocusView == null) {
-                        errorFocusView = editTextPassword;
-                    }
-                } else if (password.length() < 4) {
-                    editTextPassword.setError("A senha precisa conter no mínimo 4 caracteres");
-                    if (errorFocusView == null) {
-                        errorFocusView = editTextPassword;
-                    }
-                }
+            String email = editTextEmail.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
+            String passwordConfirmation = editTextPasswordConfirmation.getText().toString().trim();
+            View errorFocusView = null;
 
-                if (passwordConfirmation.isEmpty()) {
-                    editTextPasswordConfirmation.setError("Campo confirmação de senha é obrigatório");
-                    if (errorFocusView == null) {
-                        errorFocusView = editTextPasswordConfirmation;
-                    }
-                } else if (!passwordConfirmation.equals(password)) {
-                    editTextPasswordConfirmation.setError("As senhas precisam corresponder");
-                    if (errorFocusView == null) {
-                        errorFocusView = editTextPasswordConfirmation;
-                    }
-                }
-
-                if (errorFocusView != null) {
-                    errorFocusView.requestFocus();
-                    Toast.makeText(RecuperarSenhaActivity.this, "Reveja os campos indicados com erro", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(RecuperarSenhaActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-
+            if (email.isEmpty()) {
+                editTextEmail.setError("Campo e-mail é obrigatório");
+                errorFocusView = editTextEmail;
             }
+
+            if (password.isEmpty()) {
+                editTextPassword.setError("Campo senha é obrigatório");
+                if (errorFocusView == null) errorFocusView = editTextPassword;
+            } else if (password.length() < 4) {
+                editTextPassword.setError("A senha precisa conter no mínimo 4 caracteres");
+                if (errorFocusView == null) errorFocusView = editTextPassword;
+            }
+
+            if (passwordConfirmation.isEmpty()) {
+                editTextPasswordConfirmation.setError("Campo confirmação de senha é obrigatório");
+                if (errorFocusView == null) errorFocusView = editTextPasswordConfirmation;
+            } else if (!passwordConfirmation.equals(password)) {
+                editTextPasswordConfirmation.setError("As senhas precisam corresponder");
+                if (errorFocusView == null) errorFocusView = editTextPasswordConfirmation;
+            }
+
+            if (errorFocusView != null) {
+                errorFocusView.requestFocus();
+                Toast.makeText(this, "Reveja os campos indicados com erro", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            usuarioApiClient.recuperarSenha(email, password, new UsuarioApiClient.RecuperarSenhaCallback() {
+                @Override
+                public void onSuccess() {
+                    Toast.makeText(RecuperarSenhaActivity.this, "Caso tenha digitado um e-mail válido, faça login com seu email e senha", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(RecuperarSenhaActivity.this, LoginActivity.class));
+                    finish();
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+                    Toast.makeText(RecuperarSenhaActivity.this, "Caso tenha digitado um e-mail válido, faça login com seu email e senha", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(RecuperarSenhaActivity.this, LoginActivity.class));
+                    finish();
+                }
+            });
         });
 
-        textViewRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RecuperarSenhaActivity.this, CadastroActivity.class);
-                startActivity(intent);
-            }
+        textViewRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(RecuperarSenhaActivity.this, CadastroActivity.class);
+            startActivity(intent);
         });
     }
 }

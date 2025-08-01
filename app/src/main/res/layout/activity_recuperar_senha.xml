@@ -69,6 +69,19 @@
             tools:ignore="HardcodedText" />
 
         <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_border"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="16dp"
+            android:textColorHint="@android:color/darker_gray"
+            tools:ignore="Autofill,HardcodedText" />
+
+
+        <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"

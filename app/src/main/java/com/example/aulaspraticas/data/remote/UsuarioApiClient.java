@@ -57,6 +57,12 @@ public class UsuarioApiClient {
         void onError(String errorMessage);
     }
 
+    public interface RecuperarSenhaCallback {
+        void onSuccess();
+        void onError(String errorMessage);
+    }
+
+
     public void verificarEmailUnico(String email, final EmailCheckCallback callback) {
         String url = Constants.BASE_URL + "users?email=" + email;
 
@@ -147,12 +153,9 @@ public class UsuarioApiClient {
                     }
                 },
                 error -> {
-                    if (error != null && error.networkResponse != null) {
-                        int statusCode = error.networkResponse.statusCode;
-                        if (statusCode == 404) {
-                            callback.onCredenciaisInvalidas();
-                            return;
-                        }
+                    if (error != null && error.networkResponse != null && error.networkResponse.statusCode == 404) {
+                        callback.onCredenciaisInvalidas();
+                        return;
                     }
                     String errorMessage = "Erro de rede ao tentar fazer login.";
                     if (error != null && error.getMessage() != null) {
@@ -200,9 +203,50 @@ public class UsuarioApiClient {
                     callback.onError(errorMessage);
                 }
         );
-
         addToRequestQueue(request);
     }
 
+    public void recuperarSenha(String email, String novaSenha, final RecuperarSenhaCallback callback) {
+        String url = Constants.BASE_URL + "users?email=" + email;
 
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                response -> {
+                    if (response.length() > 0) {
+                        try {
+                            JSONObject usuarioJson = response.getJSONObject(0);
+                            String userId = usuarioJson.getString("id");
+
+                            String updateUrl = Constants.BASE_URL + "users/" + userId;
+
+                            JSONObject updateBody = new JSONObject();
+                            updateBody.put("password", novaSenha);
+
+                            JsonObjectRequest updateRequest = new JsonObjectRequest(
+                                    Request.Method.PUT,
+                                    updateUrl,
+                                    updateBody,
+                                    updateResponse -> callback.onSuccess(),
+                                    error -> {
+                                        String msg = "Erro ao atualizar senha";
+                                        if (error.getMessage() != null) msg += ": " + error.getMessage();
+                                        callback.onError(msg);
+                                    }
+                            );
+
+                            addToRequestQueue(updateRequest);
+                        } catch (JSONException e) {
+                            callback.onError("Erro ao processar dados do usuário.");
+                        }
+                    } else {
+                        callback.onError("E-mail não encontrado.");
+                    }
+                },
+                error -> {
+                    String msg = "Erro ao buscar usuário.";
+                    if (error.getMessage() != null) msg += ": " + error.getMessage();
+                    callback.onError(msg);
+                });
+
+        addToRequestQueue(request);
+    }
 }
