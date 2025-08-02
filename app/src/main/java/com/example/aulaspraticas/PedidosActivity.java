@@ -51,5 +51,6 @@ public class PedidosActivity extends AppCompatActivity {
             }
         });
 
+        FooterHelper.setupFooter(this);
     }
 }

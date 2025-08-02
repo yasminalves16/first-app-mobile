@@ -97,5 +97,6 @@ public class HomePageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        FooterHelper.setupFooter(this);
     }
 }

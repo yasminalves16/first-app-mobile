@@ -96,5 +96,7 @@ public class PerfilActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        FooterHelper.setupFooter(this);
+
     }
 }

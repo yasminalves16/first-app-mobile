@@ -67,6 +67,8 @@ public class CardapioActivity extends AppCompatActivity {
 
         listagemProdutos();
 
+        FooterHelper.setupFooter(this);
+
     }
 
     private void listagemProdutos() {

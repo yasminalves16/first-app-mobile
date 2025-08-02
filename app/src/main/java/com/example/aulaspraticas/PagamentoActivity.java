@@ -61,5 +61,7 @@ public class PagamentoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        FooterHelper.setupFooter(this);
     }
 }

@@ -3,10 +3,10 @@
     android:id="@+id/footerNavigation"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:orientation="horizontal"
     android:background="@color/background_bege"
     android:elevation="1dp"
     android:gravity="center"
+    android:orientation="horizontal"
     android:padding="1dp">
 
     <Button
@@ -15,11 +15,11 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:backgroundTint="@color/orange"
-        android:text="🏠 Início"
-        android:textSize="16sp"
-        android:textColor="@color/white"
         android:gravity="center"
-        android:padding="0dp" />
+        android:padding="0dp"
+        android:text="🏠 Início"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/botao_cardapio"
@@ -27,23 +27,45 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:backgroundTint="@color/orange"
-        android:text="🗒️ Cardápio"
-        android:textSize="16sp"
-        android:textColor="@color/white"
         android:gravity="center"
-        android:padding="0dp" />
+        android:padding="0dp"
+        android:text="🗒️ Cardápio"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/botao_carrinho"
+    <FrameLayout
+        android:id="@+id/frame_carrinho"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:backgroundTint="@color/orange"
-        android:text="🛒 Carrinho"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:padding="0dp" />
+        android:clipChildren="false">
+
+        <Button
+            android:id="@+id/botao_carrinho"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/orange"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="🛒 Carrinho"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/carrinho_badge"
+            android:layout_width="20dp"
+            android:layout_height="18dp"
+            android:layout_gravity="end|top"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/badge_background"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
 
     <Button
         android:id="@+id/botao_perfil"
@@ -51,10 +73,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:backgroundTint="@color/orange"
-        android:text="👤 Perfil"
-        android:textSize="16sp"
-        android:textColor="@color/white"
         android:gravity="center"
-        android:padding="0dp" />
+        android:padding="0dp"
+        android:text="👤 Perfil"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
 
 </LinearLayout>

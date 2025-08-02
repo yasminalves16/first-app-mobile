@@ -105,5 +105,7 @@ public class ItemDetalheActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        FooterHelper.setupFooter(this);
     }
 }

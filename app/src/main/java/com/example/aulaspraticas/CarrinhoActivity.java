@@ -55,6 +55,8 @@ public class CarrinhoActivity extends AppCompatActivity implements CarrinhoSingl
             intent.putExtra("isCheckoutFlow", true);
             startActivity(intent);
         });
+
+        FooterHelper.setupFooter(this);
     }
 
     private void atualizarSubtotal() {
@@ -75,6 +77,10 @@ public class CarrinhoActivity extends AppCompatActivity implements CarrinhoSingl
     @Override
     public void onItemQuantityChanged() {
         onCartChanged();
+        runOnUiThread(() -> {
+            carrinhoAdapter.atualizarItens(carrinhoSingleton.getItens());
+            atualizarSubtotal();
+        });
     }
 
     @Override

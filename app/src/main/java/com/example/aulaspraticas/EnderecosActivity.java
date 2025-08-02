@@ -80,5 +80,6 @@ public class EnderecosActivity extends AppCompatActivity {
             }
         });
 
+        FooterHelper.setupFooter(this);
     }
 }

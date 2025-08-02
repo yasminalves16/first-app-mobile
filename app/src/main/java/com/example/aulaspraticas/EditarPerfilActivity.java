@@ -129,6 +129,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        FooterHelper.setupFooter(this);
     }
 
     private void atualizarDados(String nome, String email, String telefone, String novaSenha) {
