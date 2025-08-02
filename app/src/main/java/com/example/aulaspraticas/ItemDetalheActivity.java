@@ -135,7 +135,6 @@ public class ItemDetalheActivity extends AppCompatActivity {
                 Toast.makeText(this, "“" + produto.getTitulo() + "” foi adicionado ao carrinho!", Toast.LENGTH_SHORT).show();
             }
         });
-
         FooterHelper.setupFooter(this);
     }
 }
