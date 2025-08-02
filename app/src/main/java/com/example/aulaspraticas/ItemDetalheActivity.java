@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.aulaspraticas.data.remote.CarrinhoSingleton;
 import com.example.aulaspraticas.model.CardapioItem;
 
 import java.text.NumberFormat;
@@ -20,6 +22,10 @@ public class ItemDetalheActivity extends AppCompatActivity {
     private TextView titulo, descricao, preco, tempo, ingredientes, infoAdicional;
     private ImageView imagem;
     private Button botaoAdicionar;
+    private int quantidadeSelecionada = 1;
+    private TextView textQuantidade;
+    private Button botaoAumentar, botaoDiminuir;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,9 @@ public class ItemDetalheActivity extends AppCompatActivity {
         infoAdicional = findViewById(R.id.info_adicional);
         imagem = findViewById(R.id.imagem_detalhe);
         botaoAdicionar = findViewById(R.id.botao_adicionar_carrinho);
+        textQuantidade = findViewById(R.id.text_quantity);
+        botaoAumentar = findViewById(R.id.button_increase);
+        botaoDiminuir = findViewById(R.id.button_decrease);
 
         CardapioItem produto = (CardapioItem) getIntent().getSerializableExtra("produto");
         Button botaoIrInicio = findViewById(R.id.botao_inicio);
@@ -103,6 +112,27 @@ public class ItemDetalheActivity extends AppCompatActivity {
             public void onClick(View v){
                 Intent intent = new Intent(ItemDetalheActivity.this, PerfilActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        botaoAumentar.setOnClickListener(v -> {
+            quantidadeSelecionada++;
+            textQuantidade.setText(String.valueOf(quantidadeSelecionada));
+        });
+
+        botaoDiminuir.setOnClickListener(v -> {
+            if (quantidadeSelecionada > 1) {
+                quantidadeSelecionada--;
+                textQuantidade.setText(String.valueOf(quantidadeSelecionada));
+            }
+        });
+
+        botaoAdicionar.setOnClickListener(v -> {
+            if (produto != null) {
+                CarrinhoSingleton carrinho = CarrinhoSingleton.getInstance(ItemDetalheActivity.this);
+                carrinho.adicionarProduto(produto, quantidadeSelecionada);
+                FooterHelper.setupFooter(this);
+                Toast.makeText(this, "“" + produto.getTitulo() + "” foi adicionado ao carrinho!", Toast.LENGTH_SHORT).show();
             }
         });
 
