@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
-                    android:text="Rua dos Bobos Numero 0"
+                    android:text="Rua São José Dos campos - São José dos Campos - SP"
                     android:textSize="14sp"
                     tools:ignore="HardcodedText"/>
 
