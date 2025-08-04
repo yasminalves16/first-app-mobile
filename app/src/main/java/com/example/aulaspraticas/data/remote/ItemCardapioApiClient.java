@@ -89,18 +89,16 @@ public class ItemCardapioApiClient extends BaseApiClient {
 
                 callback.onSuccess(produtos);
             }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(com.android.volley.VolleyError error) {
-                        String errorMessage = "Erro ao obter produtos.";
-                        if (error != null && error.getMessage() != null) {
-                            errorMessage += ": " + error.getMessage();
-                        }
-                        callback.onError(errorMessage);
-                    }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(com.android.volley.VolleyError error) {
+                String errorMessage = "Erro ao obter produtos.";
+                if (error != null && error.getMessage() != null) {
+                    errorMessage += ": " + error.getMessage();
                 }
-        );
+                callback.onError(errorMessage);
+            }
+        });
 
         addToRequestQueue(jsonArrayRequest);
     }

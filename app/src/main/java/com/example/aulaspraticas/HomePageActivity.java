@@ -31,7 +31,7 @@ public class HomePageActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
         boolean isLogged = preferences.getBoolean("isLogged", false);
 
-        if (!isLogged){
+        if (!isLogged) {
             Intent intent = new Intent(HomePageActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -76,7 +76,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(HomePageActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
@@ -84,7 +84,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(HomePageActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
@@ -92,11 +92,12 @@ public class HomePageActivity extends AppCompatActivity {
 
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(HomePageActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
         });
+
         FooterHelper.setupFooter(this);
     }
 }

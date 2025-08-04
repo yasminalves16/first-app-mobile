@@ -1,6 +1,8 @@
 package com.example.aulaspraticas.model;
 
-public class CarrinhoItem {
+import java.io.Serializable;
+
+public class CarrinhoItem implements Serializable {
     private CardapioItem produto;
     private int quantidade;
 

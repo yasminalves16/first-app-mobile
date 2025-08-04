@@ -77,15 +77,12 @@ public class ItemDetalheActivity extends AppCompatActivity {
             infoAdicional.setText(adicionais);
 
             // Carrega imagem
-            Glide.with(this)
-                    .load(produto.getImagem())
-                    .placeholder(R.drawable.card_entrada)
-                    .into(imagem);
+            Glide.with(this).load(produto.getImagem()).placeholder(R.drawable.card_entrada).into(imagem);
         }
 
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(ItemDetalheActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
@@ -93,7 +90,7 @@ public class ItemDetalheActivity extends AppCompatActivity {
 
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(ItemDetalheActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
@@ -101,7 +98,7 @@ public class ItemDetalheActivity extends AppCompatActivity {
 
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(ItemDetalheActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
@@ -109,7 +106,7 @@ public class ItemDetalheActivity extends AppCompatActivity {
 
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(ItemDetalheActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }

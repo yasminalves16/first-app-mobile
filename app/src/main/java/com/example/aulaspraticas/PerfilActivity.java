@@ -40,7 +40,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(PerfilActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
@@ -48,7 +48,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(PerfilActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
@@ -56,7 +56,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(PerfilActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
@@ -64,7 +64,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         botaoLogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 SharedPreferences preferences = getSharedPreferences("Restaurante.autenticacao", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("isLogged", false);
@@ -77,7 +77,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         botaoEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(PerfilActivity.this, EnderecosActivity.class);
                 startActivity(intent);
             }

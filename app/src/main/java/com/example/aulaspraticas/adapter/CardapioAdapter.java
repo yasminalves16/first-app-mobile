@@ -68,10 +68,7 @@ public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.Cardap
         CardapioItem item = produtos.get(position);
 
 
-        Glide.with(holder.itemView.getContext())
-                .load(item.getImagem())
-                .placeholder(R.drawable.card_entrada)
-                .into(holder.imagemProduto);
+        Glide.with(holder.itemView.getContext()).load(item.getImagem()).placeholder(R.drawable.card_entrada).into(holder.imagemProduto);
 
         holder.nomeProduto.setText(item.getTitulo());
         holder.descricaoProduto.setText(item.getDescricao());

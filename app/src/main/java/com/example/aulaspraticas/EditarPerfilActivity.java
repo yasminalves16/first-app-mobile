@@ -100,7 +100,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(EditarPerfilActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
@@ -108,7 +108,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         botaoIrCardapio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(EditarPerfilActivity.this, CardapioActivity.class);
                 startActivity(intent);
             }
@@ -116,7 +116,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(EditarPerfilActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
@@ -124,7 +124,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(EditarPerfilActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }

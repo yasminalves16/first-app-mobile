@@ -24,7 +24,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_recuperar_senha);
 
-        editTextEmail = findViewById(R.id.editTextEmail); // <-- adicione no layout!
+        editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editPassword);
         editTextPasswordConfirmation = findViewById(R.id.editPasswordConfirmation);
 

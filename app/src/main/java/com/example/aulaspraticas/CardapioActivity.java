@@ -37,21 +37,21 @@ public class CardapioActivity extends AppCompatActivity {
 
         botaoIrInicio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(CardapioActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
         botaoIrCarrinho.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(CardapioActivity.this, CarrinhoActivity.class);
                 startActivity(intent);
             }
         });
         botaoIrPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(CardapioActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
@@ -78,9 +78,7 @@ public class CardapioActivity extends AppCompatActivity {
                 List<CardapioItem> produtosFiltrados;
 
                 if (!categoriaSelecionada.equals("Todos")) {
-                    produtosFiltrados = produtos.stream()
-                            .filter(p -> p.getCategoria().equalsIgnoreCase(categoriaSelecionada))
-                            .collect(Collectors.toList());
+                    produtosFiltrados = produtos.stream().filter(p -> p.getCategoria().equalsIgnoreCase(categoriaSelecionada)).collect(Collectors.toList());
                 } else {
                     produtosFiltrados = produtos;
                 }

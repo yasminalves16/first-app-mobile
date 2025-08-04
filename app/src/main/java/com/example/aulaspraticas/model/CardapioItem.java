@@ -16,9 +16,7 @@ public class CardapioItem implements Serializable {
     private List<String> ingredientes;
     private List<String> alergenicos;
 
-    public CardapioItem(int id, String imagem, String titulo, String descricao, String preco, String tempo,
-                        boolean disponivel, boolean gluten, String categoria,
-                        List<String> ingredientes, List<String> alergenicos) {
+    public CardapioItem(int id, String imagem, String titulo, String descricao, String preco, String tempo, boolean disponivel, boolean gluten, String categoria, List<String> ingredientes, List<String> alergenicos) {
         this.id = id;
         this.imagem = imagem;
         this.titulo = titulo;

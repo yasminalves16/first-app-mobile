@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.util.Patterns;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.aulaspraticas.data.remote.UsuarioApiClient;
 import com.example.aulaspraticas.model.Usuario;
 
@@ -40,36 +42,36 @@ public class LoginActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString().trim();
                 View errorFocusView = null;
 
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     editTextEmailAddress.setError("Campo de email é obrigatório");
-                    if(errorFocusView == null){
+                    if (errorFocusView == null) {
                         errorFocusView = editTextEmailAddress;
                     }
                 }
 
-                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 
-                    if(errorFocusView == null){
+                    if (errorFocusView == null) {
                         editTextEmailAddress.setError("Informe um e-mail válido");
                         errorFocusView = editTextEmailAddress;
                     }
                 }
 
-                if(password.isEmpty()){
+                if (password.isEmpty()) {
                     editTextPassword.setError("Campo de senha é obrigatório");
-                    if(errorFocusView == null){
+                    if (errorFocusView == null) {
                         errorFocusView = editTextPassword;
                     }
                 }
 
-                if (editTextPassword.length() < 4){
+                if (editTextPassword.length() < 4) {
                     editTextPassword.setError("A senha precisa conter no mínimo 4 caracteres");
-                    if(errorFocusView == null){
+                    if (errorFocusView == null) {
                         errorFocusView = editTextPassword;
                     }
                 }
 
-                if(errorFocusView != null){
+                if (errorFocusView != null) {
                     errorFocusView.requestFocus();
                     Toast.makeText(LoginActivity.this, "Erro nos dados de entrada", Toast.LENGTH_SHORT).show();
                 } else {
@@ -123,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
 
         textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RecuperarSenhaActivity.class);
                 startActivity(intent);
             }

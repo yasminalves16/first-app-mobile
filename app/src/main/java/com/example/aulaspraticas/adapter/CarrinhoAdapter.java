@@ -22,7 +22,7 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHolder>{
+public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHolder> {
 
     private List<CarrinhoItem> itensCarrinho;
     private Context context;
@@ -44,6 +44,7 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_carrinho, parent, false);
         return new ViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CarrinhoItem item = itensCarrinho.get(position);
@@ -63,11 +64,7 @@ public class CarrinhoAdapter extends RecyclerView.Adapter<CarrinhoAdapter.ViewHo
         holder.textViewProductPrice.setText(precoBr.format(preco));
         holder.textViewProductSubtotal.setText(precoBr.format(subtotal));
 
-        Glide.with(context)
-                .load(item.getProduto().getImagem())
-                .placeholder(R.drawable.card_entrada)
-                .error(R.drawable.card_entrada)
-                .into(holder.imageViewProduct);
+        Glide.with(context).load(item.getProduto().getImagem()).placeholder(R.drawable.card_entrada).error(R.drawable.card_entrada).into(holder.imageViewProduct);
 
         holder.buttonIncreaseQuantity.setOnClickListener(v -> {
             if (item.getQuantidade() < 10) {

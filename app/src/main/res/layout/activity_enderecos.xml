@@ -8,7 +8,6 @@
     android:background="@color/background_bege"
     tools:context=".EnderecosActivity">
 
-
     <include
         android:id="@+id/header"
         layout="@layout/layout_header"
@@ -29,107 +28,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
 
+    <Button
+        android:id="@+id/botao_adicionar_endereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Endereço"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/orange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo_enderecos" />
 
-    <ScrollView
-        android:id="@+id/scrollViewEnderecos"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_enderecos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/botao_adicionar_endereco"
         app:layout_constraintBottom_toTopOf="@id/footerNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titulo_enderecos">
-
-        <LinearLayout
-            android:id="@+id/endereco_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/rounded_border"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rua tal - São José dos Campos - SP"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/selecionar_botao_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:backgroundTint="@color/green"
-                    android:text="Selecionar"
-                    android:textColor="@android:color/white" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:backgroundTint="@color/grey"
-                    android:text="Editar" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:backgroundTint="@color/red_soft"
-                    android:text="Remover" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/rounded_border"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rua do trabalho - São José dos Campos - SP"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/selecionar_botao_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:backgroundTint="@color/green"
-                    android:text="Selecionar"
-                    android:textColor="@android:color/white" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:backgroundTint="@color/grey"
-                    android:text="Editar" />
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:backgroundTint="@color/red_soft"
-                    android:text="Remover" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_endereco" />
 
     <include
         android:id="@+id/footerNavigation"
