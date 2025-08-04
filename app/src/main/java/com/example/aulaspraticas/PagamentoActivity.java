@@ -99,9 +99,9 @@ public class PagamentoActivity extends AppCompatActivity {
 
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
-        textViewSubtotalSummaryValue.setText(currencyFormat.format(subtotal));
-        textViewDeliveryFeeValue.setText(currencyFormat.format(deliveryFee));
-        textViewTotalValue.setText(currencyFormat.format(pedidoTotal));
+        textViewSubtotalSummaryValue.setText("Subtotal: " + currencyFormat.format(subtotal));
+        textViewDeliveryFeeValue.setText("Entrega: " + currencyFormat.format(deliveryFee));
+        textViewTotalValue.setText("Total: " + currencyFormat.format(pedidoTotal));
     }
 
     private void fazerPagamento() {
